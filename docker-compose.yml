@@ -1,0 +1,27 @@
+version: '3'
+services:
+  beanstalkd:
+    image: schickling/beanstalkd
+    container_name: beanstalkd
+    ports:
+      - "11300:11300"
+    networks:
+      - queues
+
+  beanstalkd_console:
+    image: schickling/beanstalkd-console
+    container_name: beanstalkd_console
+    environment:
+      - BEANSTALKD_HOST=beanstalkd
+      - BEANSTALKD_PORT=11300
+    ports:
+      - "2080:2080"
+    networks:
+      - queues
+    depends_on:
+      - beanstalkd
+
+
+networks:
+  queues:
+    driver: bridge
