@@ -4,7 +4,6 @@ module.exports = ({ envs }) => {
     client: {
       host,
       port: 6379,
-      name: 'mymaster',
     },
   });
 };

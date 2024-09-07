@@ -17,11 +17,11 @@
   "gnetId": 61,
   "graphTooltip": 1,
   "id": 2,
-  "iteration": 1725646182880,
+  "iteration": 1725723962236,
   "links": [],
   "panels": [
     {
-      "collapsed": false,
+      "collapsed": true,
       "datasource": null,
       "gridPos": {
         "h": 1,
@@ -30,768 +30,732 @@
         "y": 0
       },
       "id": 65078,
-      "panels": [],
+      "panels": [
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 5,
+            "w": 12,
+            "x": 0,
+            "y": 1
+          },
+          "id": 65088,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "vertical",
+            "reduceOptions": {
+              "calcs": ["lastNotNull"],
+              "fields": "",
+              "values": false
+            },
+            "text": {},
+            "textMode": "auto"
+          },
+          "pluginVersion": "8.0.2",
+          "targets": [
+            {
+              "groupBy": [],
+              "measurement": "beanstalkd_overview",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": ["binlog_max_size"],
+                    "type": "field"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "server",
+                  "operator": "=",
+                  "value": "beanstalkd:11300"
+                }
+              ]
+            }
+          ],
+          "title": "Binlog max size (bytes)",
+          "type": "stat"
+        },
+        {
+          "cacheTimeout": null,
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "percentage",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 5,
+            "w": 12,
+            "x": 12,
+            "y": 1
+          },
+          "id": 65086,
+          "interval": null,
+          "links": [],
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "horizontal",
+            "reduceOptions": {
+              "calcs": ["lastNotNull"],
+              "fields": "",
+              "values": false
+            },
+            "text": {},
+            "textMode": "auto"
+          },
+          "pluginVersion": "8.0.2",
+          "targets": [
+            {
+              "alias": "User CPU time",
+              "groupBy": [],
+              "measurement": "beanstalkd_overview",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": ["rusage_utime"],
+                    "type": "field"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "server",
+                  "operator": "=",
+                  "value": "beanstalkd:11300"
+                }
+              ]
+            },
+            {
+              "alias": "System CPU time",
+              "groupBy": [],
+              "hide": false,
+              "measurement": "beanstalkd_overview",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": ["rusage_stime"],
+                    "type": "field"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "server",
+                  "operator": "=",
+                  "value": "beanstalkd:11300"
+                }
+              ]
+            }
+          ],
+          "title": "CPU usage time",
+          "type": "stat"
+        },
+        {
+          "datasource": null,
+          "description": "\"current-producers\" is the number of open connections that have each issued at least one put command.\n\n\"current-workers\" is the number of open connections that have each issued at least one reserve command.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 4,
+                "gradientMode": "opacity",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 6
+          },
+          "id": 65084,
+          "options": {
+            "legend": {
+              "calcs": ["min", "max"],
+              "displayMode": "table",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "multi"
+            }
+          },
+          "targets": [
+            {
+              "groupBy": [],
+              "measurement": "beanstalkd_overview",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": ["current_workers"],
+                    "type": "field"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "server",
+                  "operator": "=",
+                  "value": "beanstalkd:11300"
+                }
+              ]
+            },
+            {
+              "groupBy": [],
+              "hide": false,
+              "measurement": "beanstalkd_overview",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": ["current_producers"],
+                    "type": "field"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "server",
+                  "operator": "=",
+                  "value": "beanstalkd:11300"
+                }
+              ]
+            }
+          ],
+          "title": "Workers/Producers",
+          "type": "timeseries"
+        },
+        {
+          "datasource": null,
+          "description": "\"current-waiting\" is the number of open connections that have issued a reserve command but not yet received a response.\n\n\"current-connections\" is the number of currently open connections.\n",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 13,
+                "gradientMode": "opacity",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineStyle": {
+                  "fill": "solid"
+                },
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 10,
+            "w": 12,
+            "x": 12,
+            "y": 6
+          },
+          "id": 65082,
+          "options": {
+            "legend": {
+              "calcs": ["last", "max", "min"],
+              "displayMode": "table",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "multi"
+            }
+          },
+          "targets": [
+            {
+              "groupBy": [],
+              "measurement": "beanstalkd_overview",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": ["current_waiting"],
+                    "type": "field"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "groupBy": [],
+              "hide": false,
+              "measurement": "beanstalkd_overview",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": ["current_connections"],
+                    "type": "field"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "Current Connections",
+          "type": "timeseries"
+        },
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                }
+              },
+              "mappings": []
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 14
+          },
+          "id": 65090,
+          "options": {
+            "displayLabels": ["name", "value"],
+            "legend": {
+              "displayMode": "table",
+              "placement": "bottom",
+              "values": ["value"]
+            },
+            "pieType": "pie",
+            "reduceOptions": {
+              "calcs": ["lastNotNull"],
+              "fields": "",
+              "values": false
+            },
+            "tooltip": {
+              "mode": "multi"
+            }
+          },
+          "pluginVersion": "8.0.2",
+          "targets": [
+            {
+              "groupBy": [],
+              "measurement": "beanstalkd_overview",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": ["cmd_put"],
+                    "type": "field"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "server",
+                  "operator": "=",
+                  "value": "beanstalkd:11300"
+                }
+              ]
+            },
+            {
+              "groupBy": [],
+              "hide": false,
+              "measurement": "beanstalkd_overview",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": ["cmd_reserve"],
+                    "type": "field"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "server",
+                  "operator": "=",
+                  "value": "beanstalkd:11300"
+                }
+              ]
+            },
+            {
+              "groupBy": [],
+              "hide": false,
+              "measurement": "beanstalkd_overview",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": ["cmd_delete"],
+                    "type": "field"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "server",
+                  "operator": "=",
+                  "value": "beanstalkd:11300"
+                }
+              ]
+            },
+            {
+              "groupBy": [],
+              "hide": false,
+              "measurement": "beanstalkd_overview",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": ["cmd_release"],
+                    "type": "field"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "server",
+                  "operator": "=",
+                  "value": "beanstalkd:11300"
+                }
+              ]
+            }
+          ],
+          "title": "Commands",
+          "type": "piechart"
+        },
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 4,
+                "gradientMode": "opacity",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 13,
+            "w": 12,
+            "x": 12,
+            "y": 16
+          },
+          "id": 65080,
+          "options": {
+            "legend": {
+              "calcs": ["sum", "min", "max", "last"],
+              "displayMode": "table",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "multi"
+            }
+          },
+          "targets": [
+            {
+              "groupBy": [],
+              "measurement": "beanstalkd_overview",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": ["current_jobs_reserved"],
+                    "type": "field"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "server",
+                  "operator": "=",
+                  "value": "beanstalkd:11300"
+                }
+              ]
+            },
+            {
+              "groupBy": [],
+              "hide": false,
+              "measurement": "beanstalkd_overview",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": ["current_jobs_ready"],
+                    "type": "field"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "server",
+                  "operator": "=",
+                  "value": "beanstalkd:11300"
+                }
+              ]
+            },
+            {
+              "groupBy": [],
+              "hide": false,
+              "measurement": "beanstalkd_overview",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": ["current_jobs_delayed"],
+                    "type": "field"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "server",
+                  "operator": "=",
+                  "value": "beanstalkd:11300"
+                }
+              ]
+            },
+            {
+              "groupBy": [],
+              "hide": false,
+              "measurement": "beanstalkd_overview",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "refId": "E",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": ["current_jobs_buried"],
+                    "type": "field"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "server",
+                  "operator": "=",
+                  "value": "beanstalkd:11300"
+                }
+              ]
+            }
+          ],
+          "title": "Jobs",
+          "type": "timeseries"
+        }
+      ],
       "title": "Beanstalkd",
       "type": "row"
-    },
-    {
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 12,
-        "x": 0,
-        "y": 1
-      },
-      "id": 65088,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "vertical",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.0.2",
-      "targets": [
-        {
-          "groupBy": [],
-          "measurement": "beanstalkd_overview",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "binlog_max_size"
-                ],
-                "type": "field"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "server",
-              "operator": "=",
-              "value": "beanstalkd:11300"
-            }
-          ]
-        }
-      ],
-      "title": "Binlog max size (bytes)",
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "percentage",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 12,
-        "x": 12,
-        "y": 1
-      },
-      "id": 65086,
-      "interval": null,
-      "links": [],
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.0.2",
-      "targets": [
-        {
-          "alias": "User CPU time",
-          "groupBy": [],
-          "measurement": "beanstalkd_overview",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "rusage_utime"
-                ],
-                "type": "field"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "server",
-              "operator": "=",
-              "value": "beanstalkd:11300"
-            }
-          ]
-        },
-        {
-          "alias": "System CPU time",
-          "groupBy": [],
-          "hide": false,
-          "measurement": "beanstalkd_overview",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "rusage_stime"
-                ],
-                "type": "field"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "server",
-              "operator": "=",
-              "value": "beanstalkd:11300"
-            }
-          ]
-        }
-      ],
-      "title": "CPU usage time",
-      "type": "stat"
-    },
-    {
-      "datasource": null,
-      "description": "\"current-producers\" is the number of open connections that have each issued at least one put command.\n\n\"current-workers\" is the number of open connections that have each issued at least one reserve command.",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 4,
-            "gradientMode": "opacity",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 6
-      },
-      "id": 65084,
-      "options": {
-        "legend": {
-          "calcs": [
-            "min",
-            "max"
-          ],
-          "displayMode": "table",
-          "placement": "bottom"
-        },
-        "tooltip": {
-          "mode": "multi"
-        }
-      },
-      "targets": [
-        {
-          "groupBy": [],
-          "measurement": "beanstalkd_overview",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "current_workers"
-                ],
-                "type": "field"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "server",
-              "operator": "=",
-              "value": "beanstalkd:11300"
-            }
-          ]
-        },
-        {
-          "groupBy": [],
-          "hide": false,
-          "measurement": "beanstalkd_overview",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "current_producers"
-                ],
-                "type": "field"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "server",
-              "operator": "=",
-              "value": "beanstalkd:11300"
-            }
-          ]
-        }
-      ],
-      "title": "Workers/Producers",
-      "type": "timeseries"
-    },
-    {
-      "datasource": null,
-      "description": "\"current-waiting\" is the number of open connections that have issued a reserve command but not yet received a response.\n\n\"current-connections\" is the number of currently open connections.\n",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 13,
-            "gradientMode": "opacity",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineStyle": {
-              "fill": "solid"
-            },
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 10,
-        "w": 12,
-        "x": 12,
-        "y": 6
-      },
-      "id": 65082,
-      "options": {
-        "legend": {
-          "calcs": [
-            "last",
-            "max",
-            "min"
-          ],
-          "displayMode": "table",
-          "placement": "bottom"
-        },
-        "tooltip": {
-          "mode": "multi"
-        }
-      },
-      "targets": [
-        {
-          "groupBy": [],
-          "measurement": "beanstalkd_overview",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "current_waiting"
-                ],
-                "type": "field"
-              }
-            ]
-          ],
-          "tags": []
-        },
-        {
-          "groupBy": [],
-          "hide": false,
-          "measurement": "beanstalkd_overview",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "current_connections"
-                ],
-                "type": "field"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "title": "Current Connections",
-      "type": "timeseries"
-    },
-    {
-      "aliasColors": {},
-      "breakPoint": "50%",
-      "cacheTimeout": null,
-      "combine": {
-        "label": "Others",
-        "threshold": 0
-      },
-      "datasource": null,
-      "fontSize": "80%",
-      "format": "short",
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 14
-      },
-      "id": 65090,
-      "interval": null,
-      "legend": {
-        "show": true,
-        "values": true
-      },
-      "legendType": "Under graph",
-      "links": [],
-      "nullPointMode": "connected",
-      "pieType": "pie",
-      "pluginVersion": "8.0.2",
-      "strokeWidth": 1,
-      "targets": [
-        {
-          "alias": "put",
-          "groupBy": [],
-          "measurement": "beanstalkd_overview",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "cmd_put"
-                ],
-                "type": "field"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "server",
-              "operator": "=",
-              "value": "beanstalkd:11300"
-            }
-          ]
-        },
-        {
-          "alias": "reserve",
-          "groupBy": [],
-          "hide": false,
-          "measurement": "beanstalkd_overview",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "cmd_reserve"
-                ],
-                "type": "field"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "server",
-              "operator": "=",
-              "value": "beanstalkd:11300"
-            }
-          ]
-        },
-        {
-          "alias": "delete",
-          "groupBy": [],
-          "hide": false,
-          "measurement": "beanstalkd_overview",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "C",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "cmd_delete"
-                ],
-                "type": "field"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "server",
-              "operator": "=",
-              "value": "beanstalkd:11300"
-            }
-          ]
-        },
-        {
-          "alias": "release",
-          "groupBy": [],
-          "hide": false,
-          "measurement": "beanstalkd_overview",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "D",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "cmd_release"
-                ],
-                "type": "field"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "server",
-              "operator": "=",
-              "value": "beanstalkd:11300"
-            }
-          ]
-        }
-      ],
-      "title": "Commands",
-      "type": "grafana-piechart-panel",
-      "valueName": "current"
-    },
-    {
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 4,
-            "gradientMode": "opacity",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 13,
-        "w": 12,
-        "x": 12,
-        "y": 16
-      },
-      "id": 65080,
-      "options": {
-        "legend": {
-          "calcs": [
-            "sum",
-            "min",
-            "max",
-            "last"
-          ],
-          "displayMode": "table",
-          "placement": "bottom"
-        },
-        "tooltip": {
-          "mode": "multi"
-        }
-      },
-      "targets": [
-        {
-          "groupBy": [],
-          "measurement": "beanstalkd_overview",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "current_jobs_reserved"
-                ],
-                "type": "field"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "server",
-              "operator": "=",
-              "value": "beanstalkd:11300"
-            }
-          ]
-        },
-        {
-          "groupBy": [],
-          "hide": false,
-          "measurement": "beanstalkd_overview",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "current_jobs_ready"
-                ],
-                "type": "field"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "server",
-              "operator": "=",
-              "value": "beanstalkd:11300"
-            }
-          ]
-        },
-        {
-          "groupBy": [],
-          "hide": false,
-          "measurement": "beanstalkd_overview",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "C",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "current_jobs_delayed"
-                ],
-                "type": "field"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "server",
-              "operator": "=",
-              "value": "beanstalkd:11300"
-            }
-          ]
-        },
-        {
-          "groupBy": [],
-          "hide": false,
-          "measurement": "beanstalkd_overview",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "E",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "current_jobs_buried"
-                ],
-                "type": "field"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "server",
-              "operator": "=",
-              "value": "beanstalkd:11300"
-            }
-          ]
-        }
-      ],
-      "title": "Jobs",
-      "type": "timeseries"
     },
     {
       "collapsed": true,
@@ -800,7 +764,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 29
+        "y": 1
       },
       "id": 65058,
       "panels": [
@@ -846,9 +810,7 @@
             "justifyMode": "auto",
             "orientation": "horizontal",
             "reduceOptions": {
-              "calcs": [
-                "lastNotNull"
-              ],
+              "calcs": ["lastNotNull"],
               "fields": "",
               "values": false
             },
@@ -863,9 +825,7 @@
               "groupBy": [
                 {
                   "interval": "auto",
-                  "params": [
-                    "auto"
-                  ],
+                  "params": ["auto"],
                   "type": "time"
                 }
               ],
@@ -878,9 +838,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -937,9 +895,7 @@
             "justifyMode": "auto",
             "orientation": "horizontal",
             "reduceOptions": {
-              "calcs": [
-                "lastNotNull"
-              ],
+              "calcs": ["lastNotNull"],
               "fields": "",
               "values": false
             },
@@ -954,9 +910,7 @@
               "groupBy": [
                 {
                   "interval": "auto",
-                  "params": [
-                    "auto"
-                  ],
+                  "params": ["auto"],
                   "type": "time"
                 }
               ],
@@ -968,9 +922,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -1031,9 +983,7 @@
             "justifyMode": "auto",
             "orientation": "horizontal",
             "reduceOptions": {
-              "calcs": [
-                "lastNotNull"
-              ],
+              "calcs": ["lastNotNull"],
               "fields": "",
               "values": false
             },
@@ -1048,9 +998,7 @@
               "groupBy": [
                 {
                   "interval": "auto",
-                  "params": [
-                    "auto"
-                  ],
+                  "params": ["auto"],
                   "type": "time"
                 }
               ],
@@ -1063,9 +1011,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -1091,7 +1037,719 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 30
+        "y": 2
+      },
+      "id": 65059,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "influxdb",
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "fillGradient": 0,
+          "grid": {},
+          "gridPos": {
+            "h": 8,
+            "w": 24,
+            "x": 0,
+            "y": 2
+          },
+          "hiddenSeries": false,
+          "id": 42026,
+          "interval": "$inter",
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "connected",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "8.0.2",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "/ in$/",
+              "transform": "negative-Y"
+            }
+          ],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "$tag_host: $tag_interface: $col",
+              "dsType": "influxdb",
+              "function": "derivative",
+              "groupBy": [
+                {
+                  "interval": "auto",
+                  "params": ["auto"],
+                  "type": "time"
+                },
+                {
+                  "key": "host",
+                  "params": ["tag"],
+                  "type": "tag"
+                },
+                {
+                  "key": "interface",
+                  "params": ["tag"],
+                  "type": "tag"
+                }
+              ],
+              "measurement": "net_bytes_recv",
+              "policy": "default",
+              "query": "SELECT non_negative_derivative(mean(bytes_recv),1s)*8 as \"in\"  FROM \"net\" WHERE host =~ /$server/ AND interface =~ /(vlan|eth|bond).*/ AND $timeFilter GROUP BY time($interval), * fill(none)",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": ["value"],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "$tag_host: $tag_interface: $col",
+              "dsType": "influxdb",
+              "function": "derivative",
+              "groupBy": [
+                {
+                  "interval": "auto",
+                  "params": ["auto"],
+                  "type": "time"
+                },
+                {
+                  "key": "host",
+                  "params": ["tag"],
+                  "type": "tag"
+                },
+                {
+                  "key": "interface",
+                  "params": ["tag"],
+                  "type": "tag"
+                }
+              ],
+              "measurement": "net_bytes_recv",
+              "policy": "default",
+              "query": "SELECT non_negative_derivative(mean(bytes_sent),1s)*8 as \"out\" FROM \"net\" WHERE host =~ /$server/ AND interface =~ /(vlan|eth|bond).*/ AND $timeFilter GROUP BY time($interval), * fill(none)",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": ["value"],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Network Usage",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "bps",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": true,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "influxdb",
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "fillGradient": 0,
+          "grid": {},
+          "gridPos": {
+            "h": 8,
+            "w": 24,
+            "x": 0,
+            "y": 10
+          },
+          "hiddenSeries": false,
+          "id": 28572,
+          "interval": "$inter",
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": false,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "connected",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "8.0.2",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "/ in$/",
+              "transform": "negative-Y"
+            }
+          ],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "$tag_host: $tag_interface: $col",
+              "dsType": "influxdb",
+              "function": "derivative",
+              "groupBy": [
+                {
+                  "interval": "auto",
+                  "params": ["auto"],
+                  "type": "time"
+                },
+                {
+                  "key": "host",
+                  "params": ["tag"],
+                  "type": "tag"
+                },
+                {
+                  "key": "interface",
+                  "params": ["tag"],
+                  "type": "tag"
+                }
+              ],
+              "measurement": "net_bytes_recv",
+              "policy": "default",
+              "query": "SELECT non_negative_derivative(mean(packets_recv), 1s) as \"in\" FROM \"net\" WHERE host =~ /$server/ AND interface =~ /(vlan|eth|bond).*/ AND $timeFilter GROUP BY time($interval), * fill(none)",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": ["value"],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "$tag_host: $tag_interface: $col",
+              "dsType": "influxdb",
+              "function": "derivative",
+              "groupBy": [
+                {
+                  "interval": "auto",
+                  "params": ["auto"],
+                  "type": "time"
+                },
+                {
+                  "key": "host",
+                  "params": ["tag"],
+                  "type": "tag"
+                },
+                {
+                  "key": "interface",
+                  "params": ["tag"],
+                  "type": "tag"
+                }
+              ],
+              "measurement": "net_bytes_recv",
+              "policy": "default",
+              "query": "SELECT non_negative_derivative(mean(packets_sent), 1s) as \"out\" FROM \"net\" WHERE host =~ /$server/ AND interface =~ /(vlan|eth|bond).*/ AND $timeFilter GROUP BY time($interval), * fill(none)",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": ["value"],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Network Packets",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "pps",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": true,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "influxdb",
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "fillGradient": 0,
+          "grid": {},
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 18
+          },
+          "hiddenSeries": false,
+          "id": 58901,
+          "interval": "$inter",
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": false,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "connected",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "8.0.2",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "$tag_host: $tag_interface: $col",
+              "dsType": "influxdb",
+              "function": "derivative",
+              "groupBy": [
+                {
+                  "interval": "auto",
+                  "params": ["auto"],
+                  "type": "time"
+                },
+                {
+                  "key": "host",
+                  "params": ["tag"],
+                  "type": "tag"
+                },
+                {
+                  "key": "interface",
+                  "params": ["tag"],
+                  "type": "tag"
+                }
+              ],
+              "measurement": "net_bytes_recv",
+              "policy": "default",
+              "query": "SELECT non_negative_derivative(mean(drop_in), 1s) as \"in\" FROM \"net\" WHERE host =~ /$server/ AND interface =~ /(vlan|eth|bond).*/ AND $timeFilter GROUP BY time($interval), host,interface fill(none)",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": ["value"],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "$tag_host: $tag_interface: $col",
+              "dsType": "influxdb",
+              "function": "derivative",
+              "groupBy": [
+                {
+                  "interval": "auto",
+                  "params": ["auto"],
+                  "type": "time"
+                },
+                {
+                  "key": "host",
+                  "params": ["tag"],
+                  "type": "tag"
+                },
+                {
+                  "key": "interface",
+                  "params": ["tag"],
+                  "type": "tag"
+                }
+              ],
+              "measurement": "net_bytes_recv",
+              "policy": "default",
+              "query": "SELECT non_negative_derivative(mean(drop_out), 1s) as \"out\" FROM \"net\" WHERE host =~ /$server/ AND interface =~ /(vlan|eth|bond).*/ AND $timeFilter GROUP BY time($interval), host,interface fill(none)",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": ["value"],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Packets Drop",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": "Packets drop",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": true,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "influxdb",
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "fillGradient": 0,
+          "grid": {},
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 18
+          },
+          "hiddenSeries": false,
+          "id": 50643,
+          "interval": "$inter",
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": false,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "8.0.2",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "alias": "$tag_host: $tag_interface: $col",
+              "dsType": "influxdb",
+              "function": "derivative",
+              "groupBy": [
+                {
+                  "interval": "auto",
+                  "params": ["auto"],
+                  "type": "time"
+                },
+                {
+                  "key": "host",
+                  "params": ["tag"],
+                  "type": "tag"
+                },
+                {
+                  "key": "interface",
+                  "params": ["tag"],
+                  "type": "tag"
+                }
+              ],
+              "measurement": "net_bytes_recv",
+              "policy": "default",
+              "query": "SELECT non_negative_derivative(mean(err_in), 1s) as \"in\" FROM \"net\" WHERE host =~ /$server/ AND interface =~ /(vlan|eth|bond).*/ AND $timeFilter GROUP BY time($interval), host,interface fill(none)",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": ["value"],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "$tag_host: $tag_interface: $col",
+              "dsType": "influxdb",
+              "function": "derivative",
+              "groupBy": [
+                {
+                  "interval": "auto",
+                  "params": ["auto"],
+                  "type": "time"
+                },
+                {
+                  "key": "host",
+                  "params": ["tag"],
+                  "type": "tag"
+                },
+                {
+                  "key": "interface",
+                  "params": ["tag"],
+                  "type": "tag"
+                }
+              ],
+              "measurement": "net_bytes_recv",
+              "policy": "default",
+              "query": "SELECT non_negative_derivative(mean(err_out), 1s) as \"out\" FROM \"net\" WHERE host =~ /$server/ AND interface =~ /(vlan|eth|bond).*/ AND $timeFilter GROUP BY time($interval), host,interface fill(none)",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": ["value"],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Packets Error",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": "Packets drop",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        }
+      ],
+      "title": "Network",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 3
       },
       "id": 65060,
       "panels": [
@@ -1149,16 +1807,12 @@
               "groupBy": [
                 {
                   "interval": "auto",
-                  "params": [
-                    "auto"
-                  ],
+                  "params": ["auto"],
                   "type": "time"
                 },
                 {
                   "key": "host",
-                  "params": [
-                    "tag"
-                  ],
+                  "params": ["tag"],
                   "type": "tag"
                 }
               ],
@@ -1171,9 +1825,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -1287,16 +1939,12 @@
               "groupBy": [
                 {
                   "interval": "auto",
-                  "params": [
-                    "auto"
-                  ],
+                  "params": ["auto"],
                   "type": "time"
                 },
                 {
                   "key": "host",
-                  "params": [
-                    "tag"
-                  ],
+                  "params": ["tag"],
                   "type": "tag"
                 }
               ],
@@ -1309,9 +1957,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -1420,16 +2066,12 @@
               "groupBy": [
                 {
                   "interval": "auto",
-                  "params": [
-                    "auto"
-                  ],
+                  "params": ["auto"],
                   "type": "time"
                 },
                 {
                   "key": "host",
-                  "params": [
-                    "tag"
-                  ],
+                  "params": ["tag"],
                   "type": "tag"
                 }
               ],
@@ -1443,9 +2085,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -1560,23 +2200,17 @@
               "groupBy": [
                 {
                   "interval": "auto",
-                  "params": [
-                    "auto"
-                  ],
+                  "params": ["auto"],
                   "type": "time"
                 },
                 {
                   "key": "host",
-                  "params": [
-                    "tag"
-                  ],
+                  "params": ["tag"],
                   "type": "tag"
                 },
                 {
                   "key": "path",
-                  "params": [
-                    "tag"
-                  ],
+                  "params": ["tag"],
                   "type": "tag"
                 }
               ],
@@ -1589,9 +2223,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -1711,23 +2343,17 @@
               "groupBy": [
                 {
                   "interval": "auto",
-                  "params": [
-                    "auto"
-                  ],
+                  "params": ["auto"],
                   "type": "time"
                 },
                 {
                   "key": "host",
-                  "params": [
-                    "tag"
-                  ],
+                  "params": ["tag"],
                   "type": "tag"
                 },
                 {
                   "key": "path",
-                  "params": [
-                    "tag"
-                  ],
+                  "params": ["tag"],
                   "type": "tag"
                 }
               ],
@@ -1740,9 +2366,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -1856,23 +2480,17 @@
               "groupBy": [
                 {
                   "interval": "auto",
-                  "params": [
-                    "auto"
-                  ],
+                  "params": ["auto"],
                   "type": "time"
                 },
                 {
                   "key": "host",
-                  "params": [
-                    "tag"
-                  ],
+                  "params": ["tag"],
                   "type": "tag"
                 },
                 {
                   "key": "path",
-                  "params": [
-                    "tag"
-                  ],
+                  "params": ["tag"],
                   "type": "tag"
                 }
               ],
@@ -1885,9 +2503,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -1905,23 +2521,17 @@
               "groupBy": [
                 {
                   "interval": "auto",
-                  "params": [
-                    "auto"
-                  ],
+                  "params": ["auto"],
                   "type": "time"
                 },
                 {
                   "key": "host",
-                  "params": [
-                    "tag"
-                  ],
+                  "params": ["tag"],
                   "type": "tag"
                 },
                 {
                   "key": "path",
-                  "params": [
-                    "tag"
-                  ],
+                  "params": ["tag"],
                   "type": "tag"
                 }
               ],
@@ -1934,9 +2544,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -2050,23 +2658,17 @@
               "groupBy": [
                 {
                   "interval": "auto",
-                  "params": [
-                    "auto"
-                  ],
+                  "params": ["auto"],
                   "type": "time"
                 },
                 {
                   "key": "host",
-                  "params": [
-                    "tag"
-                  ],
+                  "params": ["tag"],
                   "type": "tag"
                 },
                 {
                   "key": "path",
-                  "params": [
-                    "tag"
-                  ],
+                  "params": ["tag"],
                   "type": "tag"
                 }
               ],
@@ -2079,9 +2681,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -2099,23 +2699,17 @@
               "groupBy": [
                 {
                   "interval": "auto",
-                  "params": [
-                    "auto"
-                  ],
+                  "params": ["auto"],
                   "type": "time"
                 },
                 {
                   "key": "host",
-                  "params": [
-                    "tag"
-                  ],
+                  "params": ["tag"],
                   "type": "tag"
                 },
                 {
                   "key": "path",
-                  "params": [
-                    "tag"
-                  ],
+                  "params": ["tag"],
                   "type": "tag"
                 }
               ],
@@ -2128,9 +2722,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -2244,23 +2836,17 @@
               "groupBy": [
                 {
                   "interval": "auto",
-                  "params": [
-                    "auto"
-                  ],
+                  "params": ["auto"],
                   "type": "time"
                 },
                 {
                   "key": "host",
-                  "params": [
-                    "tag"
-                  ],
+                  "params": ["tag"],
                   "type": "tag"
                 },
                 {
                   "key": "path",
-                  "params": [
-                    "tag"
-                  ],
+                  "params": ["tag"],
                   "type": "tag"
                 }
               ],
@@ -2273,9 +2859,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -2293,23 +2877,17 @@
               "groupBy": [
                 {
                   "interval": "auto",
-                  "params": [
-                    "auto"
-                  ],
+                  "params": ["auto"],
                   "type": "time"
                 },
                 {
                   "key": "host",
-                  "params": [
-                    "tag"
-                  ],
+                  "params": ["tag"],
                   "type": "tag"
                 },
                 {
                   "key": "path",
-                  "params": [
-                    "tag"
-                  ],
+                  "params": ["tag"],
                   "type": "tag"
                 }
               ],
@@ -2322,9 +2900,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -2436,16 +3012,12 @@
               "groupBy": [
                 {
                   "interval": "auto",
-                  "params": [
-                    "auto"
-                  ],
+                  "params": ["auto"],
                   "type": "time"
                 },
                 {
                   "key": "host",
-                  "params": [
-                    "tag"
-                  ],
+                  "params": ["tag"],
                   "type": "tag"
                 }
               ],
@@ -2458,9 +3030,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -2572,16 +3142,12 @@
               "groupBy": [
                 {
                   "interval": "auto",
-                  "params": [
-                    "auto"
-                  ],
+                  "params": ["auto"],
                   "type": "time"
                 },
                 {
                   "key": "host",
-                  "params": [
-                    "tag"
-                  ],
+                  "params": ["tag"],
                   "type": "tag"
                 }
               ],
@@ -2594,9 +3160,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -2703,16 +3267,12 @@
               "groupBy": [
                 {
                   "interval": "auto",
-                  "params": [
-                    "auto"
-                  ],
+                  "params": ["auto"],
                   "type": "time"
                 },
                 {
                   "key": "host",
-                  "params": [
-                    "tag"
-                  ],
+                  "params": ["tag"],
                   "type": "tag"
                 }
               ],
@@ -2725,9 +3285,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -2789,7 +3347,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 31
+        "y": 4
       },
       "id": 65063,
       "panels": [
@@ -2842,9 +3400,7 @@
               "groupBy": [
                 {
                   "interval": "auto",
-                  "params": [
-                    "auto"
-                  ],
+                  "params": ["auto"],
                   "type": "time"
                 }
               ],
@@ -2856,9 +3412,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -2875,9 +3429,7 @@
               "groupBy": [
                 {
                   "interval": "auto",
-                  "params": [
-                    "auto"
-                  ],
+                  "params": ["auto"],
                   "type": "time"
                 }
               ],
@@ -2889,9 +3441,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -2908,9 +3458,7 @@
               "groupBy": [
                 {
                   "interval": "auto",
-                  "params": [
-                    "auto"
-                  ],
+                  "params": ["auto"],
                   "type": "time"
                 }
               ],
@@ -2922,9 +3470,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -3015,9 +3561,7 @@
               "groupBy": [
                 {
                   "interval": "auto",
-                  "params": [
-                    "auto"
-                  ],
+                  "params": ["auto"],
                   "type": "time"
                 }
               ],
@@ -3029,9 +3573,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -3048,9 +3590,7 @@
               "groupBy": [
                 {
                   "interval": "auto",
-                  "params": [
-                    "auto"
-                  ],
+                  "params": ["auto"],
                   "type": "time"
                 }
               ],
@@ -3062,9 +3602,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -3081,9 +3619,7 @@
               "groupBy": [
                 {
                   "interval": "auto",
-                  "params": [
-                    "auto"
-                  ],
+                  "params": ["auto"],
                   "type": "time"
                 }
               ],
@@ -3095,9 +3631,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -3114,9 +3648,7 @@
               "groupBy": [
                 {
                   "interval": "auto",
-                  "params": [
-                    "auto"
-                  ],
+                  "params": ["auto"],
                   "type": "time"
                 }
               ],
@@ -3128,9 +3660,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -3183,7 +3713,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 32
+        "y": 5
       },
       "id": 65070,
       "panels": [
@@ -3202,7 +3732,7 @@
             "h": 8,
             "w": 24,
             "x": 0,
-            "y": 22
+            "y": 6
           },
           "hiddenSeries": false,
           "id": 26297,
@@ -3242,15 +3772,11 @@
               "dsType": "influxdb",
               "groupBy": [
                 {
-                  "params": [
-                    "$interval"
-                  ],
+                  "params": ["$interval"],
                   "type": "time"
                 },
                 {
-                  "params": [
-                    "null"
-                  ],
+                  "params": ["null"],
                   "type": "fill"
                 }
               ],
@@ -3263,9 +3789,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -3281,15 +3805,11 @@
               "dsType": "influxdb",
               "groupBy": [
                 {
-                  "params": [
-                    "$interval"
-                  ],
+                  "params": ["$interval"],
                   "type": "time"
                 },
                 {
-                  "params": [
-                    "null"
-                  ],
+                  "params": ["null"],
                   "type": "fill"
                 }
               ],
@@ -3302,9 +3822,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -3320,15 +3838,11 @@
               "dsType": "influxdb",
               "groupBy": [
                 {
-                  "params": [
-                    "$interval"
-                  ],
+                  "params": ["$interval"],
                   "type": "time"
                 },
                 {
-                  "params": [
-                    "null"
-                  ],
+                  "params": ["null"],
                   "type": "fill"
                 }
               ],
@@ -3341,9 +3855,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -3359,15 +3871,11 @@
               "dsType": "influxdb",
               "groupBy": [
                 {
-                  "params": [
-                    "$interval"
-                  ],
+                  "params": ["$interval"],
                   "type": "time"
                 },
                 {
-                  "params": [
-                    "null"
-                  ],
+                  "params": ["null"],
                   "type": "fill"
                 }
               ],
@@ -3380,9 +3888,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -3448,7 +3954,7 @@
             "h": 8,
             "w": 24,
             "x": 0,
-            "y": 30
+            "y": 14
           },
           "hiddenSeries": false,
           "id": 28824,
@@ -3489,15 +3995,11 @@
               "dsType": "influxdb",
               "groupBy": [
                 {
-                  "params": [
-                    "$interval"
-                  ],
+                  "params": ["$interval"],
                   "type": "time"
                 },
                 {
-                  "params": [
-                    "null"
-                  ],
+                  "params": ["null"],
                   "type": "fill"
                 }
               ],
@@ -3510,9 +4012,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -3564,176 +4064,95 @@
           }
         },
         {
-          "aliasColors": {},
-          "bars": true,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "influxdb",
-          "editable": true,
-          "error": false,
-          "fill": 1,
-          "fillGradient": 0,
-          "grid": {},
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
           "gridPos": {
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 38
+            "y": 22
           },
-          "hiddenSeries": false,
-          "id": 54841,
-          "interval": "$inter",
-          "isNew": true,
-          "legend": {
-            "alignAsTable": true,
-            "avg": true,
-            "current": true,
-            "hideZero": true,
-            "max": true,
-            "min": true,
-            "show": true,
-            "total": false,
-            "values": true
-          },
-          "lines": false,
-          "linewidth": 2,
-          "links": [],
-          "nullPointMode": "connected",
+          "id": 65092,
           "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "8.0.2",
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [
-            {
-              "alias": "/redis_keyspace_misses/",
-              "transform": "negative-Y"
+            "legend": {
+              "calcs": ["last", "max", "sum"],
+              "displayMode": "table",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "single"
             }
-          ],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
+          },
           "targets": [
             {
-              "alias": "$tag_host:$tag_port - $col",
-              "dsType": "influxdb",
-              "groupBy": [
-                {
-                  "params": [
-                    "$interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "measurement": "redis_used_cpu_sys",
+              "groupBy": [],
+              "measurement": "redis",
+              "orderByTime": "ASC",
               "policy": "default",
-              "query": "SELECT non_negative_derivative(mean(\"keyspace_hits\"),1s) as \"hits\" FROM \"redis\" WHERE host =~ /$server$/ AND $timeFilter GROUP BY time($interval),* fill(null)",
-              "rawQuery": true,
-              "refId": "B",
+              "refId": "A",
               "resultFormat": "time_series",
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["rdb_saves"],
                     "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "mean"
-                  }
-                ]
-              ],
-              "tags": []
-            },
-            {
-              "alias": "$tag_host:$tag_port - $col",
-              "dsType": "influxdb",
-              "groupBy": [
-                {
-                  "params": [
-                    "$interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "measurement": "redis_used_cpu_sys",
-              "policy": "default",
-              "query": "SELECT non_negative_derivative(mean(\"keyspace_misses\"),1s) as \"misses\" FROM \"redis\" WHERE host =~ /$server$/ AND $timeFilter GROUP BY time($interval),* fill(null)",
-              "rawQuery": true,
-              "refId": "C",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "value"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "mean"
                   }
                 ]
               ],
               "tags": []
             }
           ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Keyspace",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "cumulative"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "pps",
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
+          "title": "RDB saves",
+          "type": "timeseries"
         },
         {
           "aliasColors": {},
@@ -3751,7 +4170,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 38
+            "y": 22
           },
           "hiddenSeries": false,
           "id": 2660,
@@ -3790,15 +4209,11 @@
               "dsType": "influxdb",
               "groupBy": [
                 {
-                  "params": [
-                    "$interval"
-                  ],
+                  "params": ["$interval"],
                   "type": "time"
                 },
                 {
-                  "params": [
-                    "null"
-                  ],
+                  "params": ["null"],
                   "type": "fill"
                 }
               ],
@@ -3811,9 +4226,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -3872,17 +4285,17 @@
           "datasource": "influxdb",
           "editable": true,
           "error": false,
-          "fill": 0,
+          "fill": 1,
           "fillGradient": 0,
           "grid": {},
           "gridPos": {
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 46
+            "y": 30
           },
           "hiddenSeries": false,
-          "id": 40350,
+          "id": 54841,
           "interval": "$inter",
           "isNew": true,
           "legend": {
@@ -3897,7 +4310,7 @@
             "values": true
           },
           "lines": false,
-          "linewidth": 1,
+          "linewidth": 2,
           "links": [],
           "nullPointMode": "connected",
           "options": {
@@ -3908,40 +4321,72 @@
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
-          "seriesOverrides": [],
+          "seriesOverrides": [
+            {
+              "alias": "/redis_keyspace_misses/",
+              "transform": "negative-Y"
+            }
+          ],
           "spaceLength": 10,
           "stack": false,
-          "steppedLine": true,
+          "steppedLine": false,
           "targets": [
             {
               "alias": "$tag_host:$tag_port - $col",
               "dsType": "influxdb",
               "groupBy": [
                 {
-                  "params": [
-                    "$interval"
-                  ],
+                  "params": ["$interval"],
                   "type": "time"
                 },
                 {
-                  "params": [
-                    "null"
-                  ],
+                  "params": ["null"],
                   "type": "fill"
                 }
               ],
               "measurement": "redis_used_cpu_sys",
               "policy": "default",
-              "query": "SELECT mean(\"evicted_keys\") as \"evicted\",mean(\"expired_keys\") as \"expired\" FROM \"redis\" WHERE host =~ /$server$/ AND $timeFilter GROUP BY time($interval),* fill(null)",
+              "query": "SELECT non_negative_derivative(mean(\"keyspace_hits\"),1s) as \"hits\" FROM \"redis\" WHERE host =~ /$server$/ AND $timeFilter GROUP BY time($interval),* fill(null)",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": ["value"],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            },
+            {
+              "alias": "$tag_host:$tag_port - $col",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": ["$interval"],
+                  "type": "time"
+                },
+                {
+                  "params": ["null"],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "redis_used_cpu_sys",
+              "policy": "default",
+              "query": "SELECT non_negative_derivative(mean(\"keyspace_misses\"),1s) as \"misses\" FROM \"redis\" WHERE host =~ /$server$/ AND $timeFilter GROUP BY time($interval),* fill(null)",
               "rawQuery": true,
               "refId": "C",
               "resultFormat": "time_series",
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -3957,11 +4402,11 @@
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Keys",
+          "title": "Keyspace",
           "tooltip": {
             "shared": true,
             "sort": 0,
-            "value_type": "individual"
+            "value_type": "cumulative"
           },
           "type": "graph",
           "xaxis": {
@@ -3973,7 +4418,7 @@
           },
           "yaxes": [
             {
-              "format": "short",
+              "format": "pps",
               "logBase": 1,
               "max": null,
               "min": null,
@@ -4007,7 +4452,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 46
+            "y": 30
           },
           "hiddenSeries": false,
           "id": 16648,
@@ -4046,15 +4491,11 @@
               "dsType": "influxdb",
               "groupBy": [
                 {
-                  "params": [
-                    "$interval"
-                  ],
+                  "params": ["$interval"],
                   "type": "time"
                 },
                 {
-                  "params": [
-                    "null"
-                  ],
+                  "params": ["null"],
                   "type": "fill"
                 }
               ],
@@ -4067,9 +4508,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -4135,7 +4574,129 @@
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 54
+            "y": 38
+          },
+          "hiddenSeries": false,
+          "id": 40350,
+          "interval": "$inter",
+          "isNew": true,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "hideZero": true,
+            "max": true,
+            "min": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": false,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "connected",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "8.0.2",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": true,
+          "targets": [
+            {
+              "alias": "$tag_host:$tag_port - $col",
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": ["$interval"],
+                  "type": "time"
+                },
+                {
+                  "params": ["null"],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "redis_used_cpu_sys",
+              "policy": "default",
+              "query": "SELECT mean(\"evicted_keys\") as \"evicted\",mean(\"expired_keys\") as \"expired\" FROM \"redis\" WHERE host =~ /$server$/ AND $timeFilter GROUP BY time($interval),* fill(null)",
+              "rawQuery": true,
+              "refId": "C",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": ["value"],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Keys",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": true,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "influxdb",
+          "editable": true,
+          "error": false,
+          "fill": 0,
+          "fillGradient": 0,
+          "grid": {},
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 46
           },
           "hiddenSeries": false,
           "id": 55199,
@@ -4174,15 +4735,11 @@
               "dsType": "influxdb",
               "groupBy": [
                 {
-                  "params": [
-                    "$interval"
-                  ],
+                  "params": ["$interval"],
                   "type": "time"
                 },
                 {
-                  "params": [
-                    "null"
-                  ],
+                  "params": ["null"],
                   "type": "fill"
                 }
               ],
@@ -4195,9 +4752,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -4259,7 +4814,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 33
+        "y": 6
       },
       "id": 65075,
       "panels": [
@@ -4307,15 +4862,11 @@
               "dsType": "influxdb",
               "groupBy": [
                 {
-                  "params": [
-                    "$interval"
-                  ],
+                  "params": ["$interval"],
                   "type": "time"
                 },
                 {
-                  "params": [
-                    "null"
-                  ],
+                  "params": ["null"],
                   "type": "fill"
                 }
               ],
@@ -4327,9 +4878,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -4389,15 +4938,11 @@
               "dsType": "influxdb",
               "groupBy": [
                 {
-                  "params": [
-                    "$interval"
-                  ],
+                  "params": ["$interval"],
                   "type": "time"
                 },
                 {
-                  "params": [
-                    "null"
-                  ],
+                  "params": ["null"],
                   "type": "fill"
                 }
               ],
@@ -4409,9 +4954,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -4471,15 +5014,11 @@
               "dsType": "influxdb",
               "groupBy": [
                 {
-                  "params": [
-                    "$interval"
-                  ],
+                  "params": ["$interval"],
                   "type": "time"
                 },
                 {
-                  "params": [
-                    "null"
-                  ],
+                  "params": ["null"],
                   "type": "fill"
                 }
               ],
@@ -4491,9 +5030,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -4553,15 +5090,11 @@
               "dsType": "influxdb",
               "groupBy": [
                 {
-                  "params": [
-                    "$interval"
-                  ],
+                  "params": ["$interval"],
                   "type": "time"
                 },
                 {
-                  "params": [
-                    "null"
-                  ],
+                  "params": ["null"],
                   "type": "fill"
                 }
               ],
@@ -4573,9 +5106,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -4635,15 +5166,11 @@
               "dsType": "influxdb",
               "groupBy": [
                 {
-                  "params": [
-                    "$interval"
-                  ],
+                  "params": ["$interval"],
                   "type": "time"
                 },
                 {
-                  "params": [
-                    "null"
-                  ],
+                  "params": ["null"],
                   "type": "fill"
                 }
               ],
@@ -4655,9 +5182,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -4717,15 +5242,11 @@
               "dsType": "influxdb",
               "groupBy": [
                 {
-                  "params": [
-                    "$interval"
-                  ],
+                  "params": ["$interval"],
                   "type": "time"
                 },
                 {
-                  "params": [
-                    "null"
-                  ],
+                  "params": ["null"],
                   "type": "fill"
                 }
               ],
@@ -4737,9 +5258,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -4799,15 +5318,11 @@
               "dsType": "influxdb",
               "groupBy": [
                 {
-                  "params": [
-                    "$interval"
-                  ],
+                  "params": ["$interval"],
                   "type": "time"
                 },
                 {
-                  "params": [
-                    "null"
-                  ],
+                  "params": ["null"],
                   "type": "fill"
                 }
               ],
@@ -4819,9 +5334,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "value"
-                    ],
+                    "params": ["value"],
                     "type": "field"
                   },
                   {
@@ -4894,15 +5407,11 @@
               "dsType": "influxdb",
               "groupBy": [
                 {
-                  "params": [
-                    "$interval"
-                  ],
+                  "params": ["$interval"],
                   "type": "time"
                 },
                 {
-                  "params": [
-                    "null"
-                  ],
+                  "params": ["null"],
                   "type": "fill"
                 }
               ],
@@ -4915,9 +5424,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "usage_percent"
-                    ],
+                    "params": ["usage_percent"],
                     "type": "field"
                   },
                   {
@@ -5028,15 +5535,11 @@
               "dsType": "influxdb",
               "groupBy": [
                 {
-                  "params": [
-                    "$interval"
-                  ],
+                  "params": ["$interval"],
                   "type": "time"
                 },
                 {
-                  "params": [
-                    "null"
-                  ],
+                  "params": ["null"],
                   "type": "fill"
                 }
               ],
@@ -5049,9 +5552,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "usage_percent"
-                    ],
+                    "params": ["usage_percent"],
                     "type": "field"
                   },
                   {
@@ -5172,15 +5673,11 @@
               "dsType": "influxdb",
               "groupBy": [
                 {
-                  "params": [
-                    "$interval"
-                  ],
+                  "params": ["$interval"],
                   "type": "time"
                 },
                 {
-                  "params": [
-                    "null"
-                  ],
+                  "params": ["null"],
                   "type": "fill"
                 }
               ],
@@ -5193,9 +5690,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "rx_bytes"
-                    ],
+                    "params": ["rx_bytes"],
                     "type": "field"
                   },
                   {
@@ -5211,15 +5706,11 @@
               "dsType": "influxdb",
               "groupBy": [
                 {
-                  "params": [
-                    "$interval"
-                  ],
+                  "params": ["$interval"],
                   "type": "time"
                 },
                 {
-                  "params": [
-                    "null"
-                  ],
+                  "params": ["null"],
                   "type": "fill"
                 }
               ],
@@ -5232,9 +5723,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "rx_bytes"
-                    ],
+                    "params": ["rx_bytes"],
                     "type": "field"
                   },
                   {
@@ -5355,15 +5844,11 @@
               "dsType": "influxdb",
               "groupBy": [
                 {
-                  "params": [
-                    "$interval"
-                  ],
+                  "params": ["$interval"],
                   "type": "time"
                 },
                 {
-                  "params": [
-                    "null"
-                  ],
+                  "params": ["null"],
                   "type": "fill"
                 }
               ],
@@ -5376,9 +5861,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "rx_bytes"
-                    ],
+                    "params": ["rx_bytes"],
                     "type": "field"
                   },
                   {
@@ -5394,15 +5877,11 @@
               "dsType": "influxdb",
               "groupBy": [
                 {
-                  "params": [
-                    "$interval"
-                  ],
+                  "params": ["$interval"],
                   "type": "time"
                 },
                 {
-                  "params": [
-                    "null"
-                  ],
+                  "params": ["null"],
                   "type": "fill"
                 }
               ],
@@ -5415,9 +5894,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "rx_bytes"
-                    ],
+                    "params": ["rx_bytes"],
                     "type": "field"
                   },
                   {
@@ -5538,15 +6015,11 @@
               "dsType": "influxdb",
               "groupBy": [
                 {
-                  "params": [
-                    "$interval"
-                  ],
+                  "params": ["$interval"],
                   "type": "time"
                 },
                 {
-                  "params": [
-                    "null"
-                  ],
+                  "params": ["null"],
                   "type": "fill"
                 }
               ],
@@ -5559,9 +6032,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "rx_bytes"
-                    ],
+                    "params": ["rx_bytes"],
                     "type": "field"
                   },
                   {
@@ -5577,15 +6048,11 @@
               "dsType": "influxdb",
               "groupBy": [
                 {
-                  "params": [
-                    "$interval"
-                  ],
+                  "params": ["$interval"],
                   "type": "time"
                 },
                 {
-                  "params": [
-                    "null"
-                  ],
+                  "params": ["null"],
                   "type": "fill"
                 }
               ],
@@ -5598,9 +6065,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "rx_bytes"
-                    ],
+                    "params": ["rx_bytes"],
                     "type": "field"
                   },
                   {
@@ -5721,15 +6186,11 @@
               "dsType": "influxdb",
               "groupBy": [
                 {
-                  "params": [
-                    "$interval"
-                  ],
+                  "params": ["$interval"],
                   "type": "time"
                 },
                 {
-                  "params": [
-                    "null"
-                  ],
+                  "params": ["null"],
                   "type": "fill"
                 }
               ],
@@ -5742,9 +6203,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "rx_bytes"
-                    ],
+                    "params": ["rx_bytes"],
                     "type": "field"
                   },
                   {
@@ -5760,15 +6219,11 @@
               "dsType": "influxdb",
               "groupBy": [
                 {
-                  "params": [
-                    "$interval"
-                  ],
+                  "params": ["$interval"],
                   "type": "time"
                 },
                 {
-                  "params": [
-                    "null"
-                  ],
+                  "params": ["null"],
                   "type": "fill"
                 }
               ],
@@ -5781,9 +6236,7 @@
               "select": [
                 [
                   {
-                    "params": [
-                      "rx_bytes"
-                    ],
+                    "params": ["rx_bytes"],
                     "type": "field"
                   },
                   {
@@ -5845,18 +6298,15 @@
   "refresh": false,
   "schemaVersion": 30,
   "style": "dark",
-  "tags": [
-    "influxdb",
-    "telegraf"
-  ],
+  "tags": ["influxdb", "telegraf"],
   "templating": {
     "list": [
       {
         "allFormat": "glob",
         "current": {
           "selected": false,
-          "text": "",
-          "value": ""
+          "text": "influxdb",
+          "value": "influxdb"
         },
         "datasource": "influxdb",
         "description": null,
@@ -5878,12 +6328,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": [
-            ""
-          ],
-          "value": [
-            ""
-          ]
+          "text": ["Beanstalkd/Redis_Queues"],
+          "value": ["Beanstalkd/Redis_Queues"]
         },
         "datasource": "influxdb",
         "definition": "",
@@ -5908,8 +6354,8 @@
         "auto_min": "30s",
         "current": {
           "selected": false,
-          "text": "",
-          "value": ""
+          "text": "30s",
+          "value": "30s"
         },
         "datasource": null,
         "description": null,
@@ -5926,7 +6372,7 @@
             "value": "$__auto_interval"
           },
           {
-            "selected": false,
+            "selected": true,
             "text": "30s",
             "value": "30s"
           },
@@ -5986,20 +6432,10 @@
       "2h",
       "1d"
     ],
-    "time_options": [
-      "5m",
-      "15m",
-      "1h",
-      "6h",
-      "12h",
-      "24h",
-      "2d",
-      "7d",
-      "30d"
-    ]
+    "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"]
   },
   "timezone": "browser",
   "title": "Telegraf metrics",
   "uid": "jyuPR46Ik",
-  "version": 3
+  "version": 6
 }

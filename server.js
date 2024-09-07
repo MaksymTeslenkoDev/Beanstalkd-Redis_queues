@@ -2,6 +2,7 @@
 
 const fastify = require('fastify');
 const beanstalkd = require('./plugins/beanstalkd.js');
+const queue = require('./plugins/redis.js');
 const { generateUsers } = require('./common/index.js');
 
 module.exports = async ({
@@ -12,7 +13,7 @@ module.exports = async ({
 }) => {
   const app = fastify({ ...serverConfig });
 
-  //   app.register(cache, { redis: redisConfig });
+  app.register(queue, { redis: redisConfig });
   app.register(beanstalkd, { beanstalkd: beanstalkdConfig });
 
   app.post('/bs', async function seed(request, reply) {
@@ -22,6 +23,21 @@ module.exports = async ({
 
       for await (const user of generateUsers(amount)) {
         await this.beanstalkd.putJob(JSON.stringify(user));
+      }
+      request.log.info('Messages posted successfully');
+      return { message: 'Messages posted successfully' };
+    } catch (err) {
+      throw new Error(err.message);
+    }
+  });
+
+  app.post('/redis', async function seed(request, reply) {
+    try {
+      const { amount } = request.query;
+      request.log.info(`Posting ${amount} messages to redis`);
+
+      for await (const user of generateUsers(amount)) {
+        await this.queue.lpush('default-example', JSON.stringify(user));
       }
       request.log.info('Messages posted successfully');
       return { message: 'Messages posted successfully' };

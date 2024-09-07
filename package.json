@@ -11,9 +11,11 @@
   "license": "ISC",
   "dependencies": {
     "@faker-js/faker": "^9.0.0",
+    "bull": "^4.16.2",
     "dotenv": "^16.4.5",
     "fastify": "^4.28.1",
     "fastify-plugin": "^4.5.1",
+    "ioredis": "^5.4.1",
     "jackd": "^2.2.2"
   }
 }
