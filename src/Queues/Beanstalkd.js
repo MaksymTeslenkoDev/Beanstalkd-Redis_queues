@@ -5,7 +5,7 @@ class Beanstalkd {
     this.client = client;
   }
 
-  async putJob(data, options = { priority: 0, delay: 0, ttr: 60 }) {
+  async putJob(data, options = { priority: 0, delay: 0, ttr: 10 }) {
     return await this.client.put(data, options);
   }
 

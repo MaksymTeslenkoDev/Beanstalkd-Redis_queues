@@ -22,18 +22,23 @@ const client = new Jackd();
 
     let jobsCount = 0;
 
-    // logger.time('beansalkd-consumer');
     while (true) {
       const job = await client.reserve();
       if (jobsCount === 0) {
-        logger.time('beansalkd-consumer');
+        logger.time('100k');
+        logger.time('1M');
       }
       // await client.delete(job.id);
       jobsCount++;
+      if (jobsCount % 100_000 === 0) {
+        logger.log(`Processed 100K jobs`);
+        logger.timeEnd('100k');
+        logger.time('100k');
+      }
       if (jobsCount % 1_000_000 === 0) {
-        logger.log(`Processed ${jobsCount} jobs`);
-        logger.timeEnd('beansalkd-consumer');
-        logger.time('beansalkd-consumer');
+        logger.log(`Processed 1M jobs`);
+        logger.timeEnd('1M');
+        logger.time('1M');
       }
     }
   } catch (err) {

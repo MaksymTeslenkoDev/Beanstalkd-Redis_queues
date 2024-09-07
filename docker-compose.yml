@@ -5,22 +5,62 @@ services:
     container_name: beanstalkd
     ports:
       - "11300:11300"
+    # entrypoint: ["/bin/sh", "-c", "mkdir -p /data && exec beanstalkd -b /data"]
     networks:
       - queues
 
-  beanstalkd_console:
-    image: schickling/beanstalkd-console
-    container_name: beanstalkd_console
+  influxdb:
+    image: influxdb:1.8
+    container_name: influxdb
+    env_file: .env
     environment:
-      - BEANSTALKD_HOST=beanstalkd
-      - BEANSTALKD_PORT=11300
+      - INFLUX_HOST=localhost
     ports:
-      - "2080:2080"
+      - '${INFLUXDB_PORT}:${INFLUXDB_PORT}'
+    volumes:
+      - ./:/imports
+      - influxdb_data:/var/lib/influxdb
+    entrypoint: sh -c "influxd run -config /etc/influxdb/influxdb.conf & until influx -host localhost -execute 'CREATE DATABASE telegraf'; do echo waiting for influxdb; sleep 1; done; wait"
     networks:
       - queues
-    depends_on:
-      - beanstalkd
 
+  telegraf:
+    container_name: telegraf
+    image: telegraf:1.29-alpine
+    env_file: .env
+    volumes:
+      - ./telegraf/etc/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - influxdb
+    links:
+      - influxdb
+    ports:
+      - '${TELEGRAF_PORT}:${TELEGRAF_PORT}/udp'
+    networks:
+      - queues
+    entrypoint: /bin/sh -c "chmod 666 /var/run/docker.sock && /entrypoint.sh telegraf"
+
+  grafana:
+    container_name: grafana
+    image: grafana/grafana:8.0.2
+    depends_on:
+      - influxdb
+    env_file: .env
+    links:
+      - influxdb
+    ports:
+      - '3001:3000'
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning/:/etc/grafana/provisioning/
+      - ./grafana/dashboards/:/var/lib/grafana/dashboards/
+    networks:
+      -  queues
+
+volumes: 
+  grafana_data: {}
+  influxdb_data: {}
 
 networks:
   queues:
